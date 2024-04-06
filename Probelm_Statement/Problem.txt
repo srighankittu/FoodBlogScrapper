@@ -1,0 +1,52 @@
+
+Objective
+Develop a Web application that enables users to import recipes from external links, parse them using schema.org [https://schema.org/Recipe ] format, display a recipe detail page, and guide users through step-by-step cooking instructions. The application should also synchronize cooking progress with a WebSocket server and persist recipe data locally for offline access and recovery. For the UI you can pick any publicly available apps as your reference.
+Cookd: https://play.google.com/store/search?q=Cookd&c=apps&hl=en&gl=US
+Tasty: https://play.google.com/store/apps/details?id=com.buzzfeed.tasty&hl=en&gl=US
+Example recipe: https://www.indianhealthyrecipes.com/dal-fry-recipe/  
+Backend (Node.js, Express.js, MongoDB or your choice):
+* API Endpoints:
+    * Create API endpoints for:
+        * Importing recipes: Users can submit recipe URLs.
+        * Retrieving recipes: Get a list of saved recipes and details.
+        * Updating recipe state: Track user progress through the recipe steps.
+* Recipe Parsing:
+    * Implement logic on the server to handle incoming recipe URLs.
+    * Use a library like microdata-parser to extract recipe data from schema.org formatted HTML content fetched from the URL.
+    * Parse the extracted data to identify recipe title, ingredients, instructions, and images (optional).
+    * Store the parsed recipe data in a MongoDB database.
+* WebSocket Server:
+    * Set up a WebSocket server using a library like socket.io.
+    * Handle incoming connections from the frontend client.
+    * Implement logic to receive and process user updates on their cooking progress (current step).
+    * Optionally, store cooking progress data in MongoDB or broadcast updates to other connected users (real-time collaboration).
+Frontend (React.js):
+* Recipe Import:
+    * Provide a form or button for users to paste or import recipe URLs.
+    * Upon submission, send the URL to the backend API for parsing.
+* Recipe List & Details:
+    * Display a list of saved recipes with titles and previews.
+    * Clicking on a recipe should display a detailed view with:
+        * Title
+        * Ingredients list
+        * Instructions, presented clearly and concisely
+        * Images (if available)
+* Guided Cooking Mode:
+    * Create a dedicated page or section for step-by-step cooking instructions.
+    * Display one instruction step at a time.
+    * Allow navigation between steps (previous, next) using buttons.
+    * Consider including optional timers for each step.
+    * Utilize React state management (e.g., Redux, Context API) to track the current step and update the UI dynamically.
+* WebSocket Integration:
+    * Implement a WebSocket client using a library like socket.io-client.
+    * Connect to the backend WebSocket server upon application load.
+    * Send updates to the server whenever the user progresses through a recipe step.
+    * Optionally, listen for updates from the server (real-time collaboration).
+* Recipe State Persistence:
+    * Utilize local storage mechanisms (e.g., localStorage, sessionStorage) to store:
+        * User's saved recipes (basic details can be stored locally, with full recipe data fetched from the server when needed).
+        * Current cooking progress, including the recipe ID and the current step.
+* State Recovery:
+    * Upon application restart, attempt to retrieve saved recipes and cooking progress from local storage.
+    * If a WebSocket connection is established, synchronize with the server to ensure data consistency (optional).
+
