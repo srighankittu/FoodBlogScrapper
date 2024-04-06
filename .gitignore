@@ -1,0 +1,6 @@
+backend/node_modules
+backend/package-lock.json
+
+# Ignore everything in the frontend food-fe directory
+frontend/food-fe/node_modules
+frontend/food-fe/package-lock.json
