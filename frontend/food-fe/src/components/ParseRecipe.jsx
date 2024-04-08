@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import FAQComponent from "./FAQ";
 import Recipe from "./Recipe";
 
-const ParseRecipe = () => {
+const RecipeHome = () => {
   const url = useRef();
   const [recipe, setRecipes] = useState(null);
   const [FAQs, setFAQs] = useState([]);
@@ -72,4 +72,4 @@ const ParseRecipe = () => {
   );
 };
 
-export default ParseRecipe;
+export default RecipeHome;

@@ -1,10 +1,10 @@
 import "./App.css";
-import ParseRecipe from "./components/ParseRecipe";
+import RecipeHome from "./components/ParseRecipe";
 
 function App() {
   return (
     <>
-      <ParseRecipe />
+      <RecipeHome />
     </>
   );
 }
